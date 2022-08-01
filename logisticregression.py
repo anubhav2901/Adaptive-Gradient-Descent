@@ -87,13 +87,14 @@ class LogisticRegression:
     
     self.w1 = weights1.copy()
 
-  def run(self, x, y, lr=1e-2, iter=100):
+  def run(self, x, y, lr=1e-2, iter=100, make_plot=True):
     self.initialize(x, y)
     self.sgdfit(lr=lr, iter=iter)
     print('Best Accuracy using SGD: ', max(self.accuracies))
     self.adfit(iter=iter)
     print('Best Accuracy using Adaptive GD: ', max(self.accuracies1))
-    self.plot()
+    if make_plot:
+      self.plot()
 
   def plot(self):
     plt.plot(self.losses, c='r')
